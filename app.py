@@ -15,13 +15,19 @@ lottie_brain = load_lottieurl("https://assets4.lottiefiles.com/packages/lf20_Skh
 
 # Function to call the API
 def call_api(query):
-    # Replace with your actual API endpoint
+    # Replace with your actual API endpoint and API key
     api_url = "https://f8kkzo76da.execute-api.us-east-1.amazonaws.com/dev/ResearchResource"
-    
+    api_key = "researchapi#123456789"  # Replace this with your actual API key
+
+    headers = {
+        "Content-Type": "application/json",  # Ensure content type is specified
+        "x-api-key": api_key  # Replace 'x-api-key' with the appropriate header key if different
+    }
+
     try:
-        response = requests.post(api_url, json={"user_query": query})
+        response = requests.post(api_url, json={"user_query": query}, headers=headers)
         response.raise_for_status()  # Raise an exception for bad status codes
-        return response.json()  # This should now work correctly
+        return response.json()  # Parse the JSON response
     except requests.exceptions.RequestException as e:
         st.error(f"An error occurred while calling the API: {str(e)}")
         return None
