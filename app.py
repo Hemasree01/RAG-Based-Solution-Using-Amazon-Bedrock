@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import json
-from streamlit import st_lottie
+from streamlit_lottie import st_lottie
 
 # Function to load Lottie file
 def load_lottieurl(url: str): 
