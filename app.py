@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import json
+import streamlit_lottie
 from streamlit_lottie import st_lottie
 
 #
