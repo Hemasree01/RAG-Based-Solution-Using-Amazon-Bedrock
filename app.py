@@ -3,7 +3,7 @@ import requests
 import json
 from streamlit_lottie import st_lottie
 
-#
+
 # Function to load Lottie file
 def load_lottieurl(url: str): 
     r = requests.get(url)
