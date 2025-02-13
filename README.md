@@ -1,4 +1,4 @@
-Rag Based solution:/n
+**Rag Based solution:<br/>
 Steps:
 In order to create a knowledge base we need to login as IAM user.
 1.Create an s3 bucket
