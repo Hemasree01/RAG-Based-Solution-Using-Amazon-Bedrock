@@ -3,19 +3,18 @@
     <h1>RAG-Based Solution Using Amazon Bedrock</h1>
     <p>This guide provides step-by-step instructions to build a Retrieval-Augmented Generation (RAG) system using Amazon Bedrock, OpenSearch, and AWS Lambda.</p>
 
-    <h2>Steps</h2>
+    Steps
     1. Create an S3 Bucket and Upload Documents    
-    <ol>
-        <li>Navigate to Amazon S3 in the AWS Console.</li>
-        <li>Click Create bucket.</li>
-        <li>Provide a unique bucket name (e.g., rag-knowledge-base).</li>
-        <li>Choose Region: us-east-1 (Required for Amazon Bedrock).</li>
-        <li>Disable Block all public access (as needed).</li>
-        <li>Click Create bucket.</li>
-        <li>Inside the S3 bucket, click Upload.</li>
-        <li>Select your PDF, DOCX, TXT, or JSON files. Click Upload.</li>
-        <li>Note the S3 URI (e.g., s3://rag-knowledge-base/documents/).</li>
-    </ol>
+    Navigate to Amazon S3 in the AWS Console.
+    Click Create bucket.
+    Provide a unique bucket name (e.g., rag-knowledge-base).
+    Choose Region: us-east-1 (Required for Amazon Bedrock).
+    Disable Block all public access (as needed).
+    Click Create bucket.
+    Inside the S3 bucket, click Upload.
+    Select your PDF, DOCX, TXT, or JSON files. Click Upload.
+     Note the S3 URI (e.g., s3://rag-knowledge-base/documents/).
+  
 
     <h3>2. Set Up Knowledge Base in Amazon Bedrock</h3>
     <ol>
