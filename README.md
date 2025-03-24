@@ -1,120 +1,156 @@
+<h3>RAG-Based Solution Using Amazon Bedrock</h3>
 
-<body>
-    <h1>RAG-Based Solution Using Amazon Bedrock</h1>
-    <p>This guide provides step-by-step instructions to build a Retrieval-Augmented Generation (RAG) system using Amazon Bedrock, OpenSearch, and AWS Lambda.</p>
+<p>This guide provides step-by-step instructions to build a Retrieval-Augmented Generation (RAG) system using Amazon Bedrock, OpenSearch, and AWS Lambda.</p>
 
-    Steps
-    1. Create an S3 Bucket and Upload Documents    
-    Navigate to Amazon S3 in the AWS Console.
-    Click Create bucket.
-    Provide a unique bucket name (e.g., rag-knowledge-base).
-    Choose Region: us-east-1 (Required for Amazon Bedrock).
-    Disable Block all public access (as needed).
-    Click Create bucket.
-    Inside the S3 bucket, click Upload.
-    Select your PDF, DOCX, TXT, or JSON files. Click Upload.
-     Note the S3 URI (e.g., s3://rag-knowledge-base/documents/).
-  
+<h2>Steps</h2>
 
-    <h3>2. Set Up Knowledge Base in Amazon Bedrock</h3>
-    <ol>
-        <li>Navigate to Amazon Bedrock.</li>
-        <li>Ensure you are in the us-east-1 region.</li>
-        <li>Click on Knowledge Base > Create a knowledge base.</li>
-        <li>Enter a Name (e.g., rag-kb).</li>
-        <li>In Data Source, select Amazon S3.</li>
-        <li>Provide the S3 bucket URI where documents are stored.</li>
-        <li>Choose Chunking Strategy (Default recommended).</li>
-        <li>Choose Amazon Titan v2 Embedding Model for embeddings.</li>
-        <li>Select OpenSearch as the vector store.</li>
-        <li>Click Create.</li>
-        <li>Once the knowledge base is created, click Sync Now.</li>
-        <li>Wait for the synchronization to complete.</li>
-        <li>The documents are now indexed and vectorized in OpenSearch.</li>
-    </ol>
+1. Create an S3 Bucket and Upload Documents</br>
 
-    <h3>3. Create an AWS Lambda Function</h3>
-    <ol>
-        <li>Go to AWS Lambda > Create function.</li>
-        <li>Choose Author from scratch.</li>
-        <li>Provide a Function Name (e.g., rag-bedrock-lambda).</li>
-        <li>Select Python 3.9+ as the runtime.</li>
-        <li>Choose an existing IAM role or create a new one with:
-           <ul>
-              <li>AWSBedrockFullAccess</li>
-              <li>AWSLambdaBasicExecutionRole</li>
-              <li>AmazonOpenSearchServiceFullAccess</li>
-           </ul>
-        </li>
-        <li>Click Create function.</li>
-        <li>Write the function using lambda.py</li>
-    </ol>
+<p>Navigate to Amazon S3 in the AWS Console.</br>
 
-    <h3>4. Configure Environment Variables</h3>
-    <ol>
-        <li>Inside your Lambda function, navigate to the Configuration tab.</li>
-        <li>Click Environment variables > Edit.</li>
-        <li>Add:
-           <ul>
-              <li>KNOWLEDGE_BASE_ID = {your-knowledge-base-id}</li>
-              <li>FOUNDATION_MODEL_ARN = {Amazon Titan v2 ARN}</li>
-           </ul>
-        </li>
-        <li>To get the Foundation Model ARN, run:</li>
-        <pre><code>aws bedrock list-foundation-models</code></pre>        
-    </ol>
+Click Create bucket.</br>
 
-    <h3>5. Increase Lambda Timeout</h3>
-    <p>Update the Lambda function timeout to at least 1 minute (default is 3 seconds, which is insufficient).</p>
+Provide a unique bucket name (e.g., rag-knowledge-base).</br>
 
-    <h3>6. Test the Lambda Function</h3>
-    <ol>
-        <li>Click Test inside Lambda.</li>
-        <li>Use this JSON payload:</li>
-        <pre><code>{
-  "user_query": "What is Amazon Bedrock?"
-}</code></pre>
-        <li>Click Invoke and check the response.</li>
-    </ol>
-    
-    <h3>7. Create an API Gateway and Deploy</h3>
-    <ol>
-       <li>Navigate to API Gateway.</li>
-       <li>Click Create API > HTTP API.</li>
-       <li>Choose Add Integration > Lambda Function.</li>
-       <li>Select the Lambda function.</li>
-       <li>Click Next, review, and Create API.</li>
-       <li>Click on Stages > Create Stage.</li>
-       <li>Name it (your preference).</li>
-       <li>Deploy and note down the Invoke URL.</li>
-    </ol>
-    
-    <h3>8. Test API Using Postman</h3>
-    <ol>
-        <li>Open Postman.</li>
-        <li>Select POST request.</li>
-        <li>Enter {Invoke URL} in the address bar.</li>
-        <li>Set Headers: Content-Type: application/json</li>
-        <li>Enter Body:</li>
-        <pre><code>{
-    "user-query": "What is Amazon Bedrock?"
-}</code></pre>
-        <li>Click Send and verify the response.</li>
-    </ol>
-    
-    <h3>9. Streamlit App</h3>
+Choose Region: us-east-1 (Required for Amazon Bedrock).</br>
+
+Disable Block all public access (as needed).</br>
+
+Click Create bucket.</br>
+
+Inside the S3 bucket, click Upload.</br>
+
+Select your PDF, DOCX, TXT, or JSON files and click Upload.</br>
+
+Note the S3 URI (e.g., s3://rag-knowledge-base/documents/).</p></br>
+
+<p>2. Set Up Knowledge Base in Amazon Bedrock</br>
+
+Navigate to Amazon Bedrock.</br>
+
+Ensure you are in the us-east-1 region.</br>
+
+Click on Knowledge Base > Create a knowledge base.</br>
+
+Enter a Name (e.g., rag-kb).</br>
+
+In Data Source, select Amazon S3.</br>
+
+Provide the S3 bucket URI where documents are stored.</br>
+
+Choose Chunking Strategy (Default recommended).</br>
+
+Choose Amazon Titan v2 Embedding Model for embeddings.</br>
+
+Select OpenSearch as the vector store.</br>
+
+Click Create.</br>
+
+Once the knowledge base is created, click Sync Now.</br>
+
+Wait for the synchronization to complete.</br>
+
+The documents are now indexed and vectorized in OpenSearch.</br></p>
+
+<p>3. Create an AWS Lambda Function</br>
+
+Go to AWS Lambda > Create function.</br>
+
+Choose Author from scratch.</br>
+
+Provide a Function Name (e.g., rag-bedrock-lambda).</br>
+
+Select Python 3.9+ as the runtime.</br>
+
+Choose an existing IAM role or create a new one with:</br>
+
+AWSBedrockFullAccess</br>
+
+AWSLambdaBasicExecutionRole</br>
+
+AmazonOpenSearchServiceFullAccess</br>
+
+Click Create function.</br>
+
+Write the function using lambda.py.</br></p>
+
+<p>4. Configure Environment Variables</br>
+
+Inside your Lambda function, navigate to the Configuration tab.</br>
+
+Click Environment variables > Edit.</br>
+
+Add:</br>
+
+KNOWLEDGE_BASE_ID = {your-knowledge-base-id}</br>
+
+FOUNDATION_MODEL_ARN = {Amazon Titan v2 ARN}</br>
+
+To get the Foundation Model ARN, run:</br>
+
+aws bedrock list-foundation-models<br/>
+```<br/>
+
+5. Increase Lambda Timeout</br>
+
+Update the Lambda function timeout to at least 1 minute (default is 3 seconds, which is insufficient).</br>
+
+6. Test the Lambda Function</br>
+
+Click Test inside Lambda.</br>
+
+Use this JSON payload:</br>
+
+{ "user_query": "What is Amazon Bedrock?" }<br/>
+```<br/>
+
+Click Invoke and check the response.</br>
+
+7. Create an API Gateway and Deploy</br>
+
+Navigate to API Gateway.</br>
+
+Click Create API > HTTP API.</br>
+
+Choose Add Integration > Lambda Function.</br>
+
+Select the Lambda function.</br>
+
+Click Next, review, and Create API.</br>
+
+Click on Stages > Create Stage.</br>
+
+Name it (your preference).</br>
+
+Deploy and note down the Invoke URL.</br>
+
+8. Test API Using Postman</br>
+
+Open Postman.</br>
+
+Select POST request.</br>
+
+Enter {Invoke URL} in the address bar.</br>
+
+Set Headers:Content-Type: application/json</br>
+
+Enter Body:{ "user-query": "What is Amazon Bedrock?" }<br/>
+```<br/>
+
+Click Send a POST request with a question in the request body.</br>
+
+Receive and verify the response.</br>
+
+9. Streamlit App
     <pre><code>pip install streamlit requests</code></pre>
     <p>Create <code>app.py</code></p>
     <pre><code>streamlit run app.py</code></pre>
     
-    <h3>10. Test the Web Application</h3>
-    <ol>
-        <li>Open the designated port in a browser.</li>
-        <li>Enter a question and verify the response.</li>
-    </ol>
+10. Test the Web Application</h3>
+   Open the designated port in a browser.</br>
+   Enter a question and verify the response.</br>
 
     <h2>Conclusion</h2>
     <p>This project integrates Amazon Bedrock with OpenSearch to enable document-based Q&A via AI-powered embeddings and retrieval.</p>
-</body>
-</html>
+
 
