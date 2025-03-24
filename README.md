@@ -1,20 +1,10 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>RAG-Based Solution Using Amazon Bedrock</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; }
-        h1, h2, h3 { color: #333; }
-        code { background: #f4f4f4; padding: 2px 4px; border-radius: 4px; }
-        pre { background: #f4f4f4; padding: 10px; border-radius: 5px; overflow-x: auto; }
-    </style>
-</head>
+
 <body>
     <h1>RAG-Based Solution Using Amazon Bedrock</h1>
     <p>This guide provides step-by-step instructions to build a Retrieval-Augmented Generation (RAG) system using Amazon Bedrock, OpenSearch, and AWS Lambda.</p>
 
     <h2>Steps</h2>
-    <h3>1. Create an S3 Bucket and Upload Documents</h3>    
+    1. Create an S3 Bucket and Upload Documents    
     <ol>
         <li>Navigate to Amazon S3 in the AWS Console.</li>
         <li>Click Create bucket.</li>
