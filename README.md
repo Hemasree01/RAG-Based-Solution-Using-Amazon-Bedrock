@@ -88,8 +88,7 @@ FOUNDATION_MODEL_ARN = {Amazon Titan v2 ARN}</br>
 
 To get the Foundation Model ARN, run:</br>
 
-aws bedrock list-foundation-models<br/>
-```<br/></p>
+aws bedrock list-foundation-models<br/></p>
 
 <p>5. Increase Lambda Timeout</br>
 
