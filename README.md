@@ -23,7 +23,7 @@
         <li>Disable Block all public access (as needed).</li>
         <li>Click Create bucket.</li>
         <li>Inside the S3 bucket, click Upload.</li>
-        <li>Select your PDF, DOCX, TXT, or JSON files.Click Upload.</li>
+        <li>Select your PDF, DOCX, TXT, or JSON files. Click Upload.</li>
         <li>Note the S3 URI (e.g., s3://rag-knowledge-base/documents/).</li>
     </ol>
 
@@ -51,12 +51,14 @@
         <li>Provide a Function Name (e.g., rag-bedrock-lambda).</li>
         <li>Select Python 3.9+ as the runtime.</li>
         <li>Choose an existing IAM role or create a new one with:
-           <li>AWSBedrockFullAccess</li>
-           <li>AWSLambdaBasicExecutionRole</li>
-           <li>AmazonOpenSearchServiceFullAccess</li>
+           <ul>
+              <li>AWSBedrockFullAccess</li>
+              <li>AWSLambdaBasicExecutionRole</li>
+              <li>AmazonOpenSearchServiceFullAccess</li>
+           </ul>
         </li>
         <li>Click Create function.</li>
-        <li>write the function using lambda.py</li>
+        <li>Write the function using lambda.py</li>
     </ol>
 
     <h3>4. Configure Environment Variables</h3>
@@ -66,7 +68,7 @@
         <li>Add:
            <ul>
               <li>KNOWLEDGE_BASE_ID = {your-knowledge-base-id}</li>
-              <li> FOUNDATION_MODEL_ARN = {Amazon Titan v2 ARN}</li>
+              <li>FOUNDATION_MODEL_ARN = {Amazon Titan v2 ARN}</li>
            </ul>
         </li>
         <li>To get the Foundation Model ARN, run:</li>
@@ -85,7 +87,8 @@
 }</code></pre>
         <li>Click Invoke and check the response.</li>
     </ol>
-    <h3>7.Create an API Gateway and deploy</h3>
+    
+    <h3>7. Create an API Gateway and Deploy</h3>
     <ol>
        <li>Navigate to API Gateway.</li>
        <li>Click Create API > HTTP API.</li>
@@ -93,30 +96,26 @@
        <li>Select the Lambda function.</li>
        <li>Click Next, review, and Create API.</li>
        <li>Click on Stages > Create Stage.</li>
-       <li>Name it(your preference)<li>
+       <li>Name it (your preference).</li>
        <li>Deploy and note down the Invoke URL.</li>
     </ol>
     
-    <h3>7. Test API Using Postman</h3>
+    <h3>8. Test API Using Postman</h3>
     <ol>
-    <li>Open Postman.</li>
-    <li>Select POST request.</li>
-    <li>Enter {Invoke URL} in the address bar.</li>
-    <li>Set Headers:Content-Type: application/json</li>
-    <li>Enter Body:</li>
-    <pre><code>
-Body:
-{
+        <li>Open Postman.</li>
+        <li>Select POST request.</li>
+        <li>Enter {Invoke URL} in the address bar.</li>
+        <li>Set Headers: Content-Type: application/json</li>
+        <li>Enter Body:</li>
+        <pre><code>{
     "user-query": "What is Amazon Bedrock?"
 }</code></pre>
-    <li> click on Send a POST request with a question in the request body.</li>
-    <li>Receive and verify the response.</li>
-
-    <h3>8. Create a Streamlit Web Frontend</h3>
+        <li>Click Send and verify the response.</li>
+    </ol>
+    
+    <h3>9. Streamlit App</h3>
     <pre><code>pip install streamlit requests</code></pre>
     <p>Create <code>app.py</code></p>
-    
-    <h3>9. Run the Streamlit App</h3>
     <pre><code>streamlit run app.py</code></pre>
     
     <h3>10. Test the Web Application</h3>
