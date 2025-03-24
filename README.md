@@ -89,13 +89,13 @@ FOUNDATION_MODEL_ARN = {Amazon Titan v2 ARN}</br>
 To get the Foundation Model ARN, run:</br>
 
 aws bedrock list-foundation-models<br/>
-```<br/>
+```<br/></p>
 
-5. Increase Lambda Timeout</br>
+<p>5. Increase Lambda Timeout</br>
 
-Update the Lambda function timeout to at least 1 minute (default is 3 seconds, which is insufficient).</br>
+Update the Lambda function timeout to at least 1 minute (default is 3 seconds, which is insufficient).</br></p>
 
-6. Test the Lambda Function</br>
+<p>6. Test the Lambda Function</br>
 
 Click Test inside Lambda.</br>
 
@@ -103,10 +103,9 @@ Use this JSON payload:</br>
 
 { "user_query": "What is Amazon Bedrock?" }<br/>
 
+Click Invoke and check the response.</br></p>
 
-Click Invoke and check the response.</br>
-
-7. Create an API Gateway and Deploy</br>
+<p>7. Create an API Gateway and Deploy</br>
 
 Navigate to API Gateway.</br>
 
@@ -122,9 +121,9 @@ Click on Stages > Create Stage.</br>
 
 Name it (your preference).</br>
 
-Deploy and note down the Invoke URL.</br>
+Deploy and note down the Invoke URL.</br></p>
 
-8. Test API Using Postman</br>
+<p>8. Test API Using Postman</br>
 
 Open Postman.</br>
 
@@ -136,19 +135,18 @@ Set Headers:Content-Type: application/json</br>
 
 Enter Body:{ "user-query": "What is Amazon Bedrock?" }<br/>
 
-
 Click Send a POST request with a question in the request body.</br>
 
-Receive and verify the response.</br>
+Receive and verify the response.</br></p>
 
-9. Streamlit App
-  pip install streamlit
-  use app.py to write the code
-  to run the python code "streamlit run app.py"
+<p>9. To create Streamlit App</br>
+  pip install streamlit</br>
+  use app.py to write the code</br>
+  to run the python code "streamlit run app.py"</p></br>
     
-10. Test the Web Application
+<p>10. Test the Web Application</br>
    Open the designated port in a browser.</br>
-   Enter a question and verify the response.</br>
+   Enter a question and verify the response.</br></p>
 
     <h2>Conclusion</h2>
     <p>This project integrates Amazon Bedrock with OpenSearch to enable document-based Q&A via AI-powered embeddings and retrieval.</p>
