@@ -4,7 +4,7 @@
 
 <h2>Steps</h2>
 
-1. Create an S3 Bucket and Upload Documents</br>
+<h4>1. Create an S3 Bucket and Upload Documents</br></h4>
 
 <p>Navigate to Amazon S3 in the AWS Console.</br>
 
@@ -24,7 +24,7 @@ Select your PDF, DOCX, TXT, or JSON files and click Upload.</br>
 
 Note the S3 URI (e.g., s3://rag-knowledge-base/documents/).</p></br>
 
-<p>2. Set Up Knowledge Base in Amazon Bedrock</br>
+<h4><p>2. Set Up Knowledge Base in Amazon Bedrock</br></h4>
 
 Navigate to Amazon Bedrock.</br>
 
@@ -52,7 +52,7 @@ Wait for the synchronization to complete.</br>
 
 The documents are now indexed and vectorized in OpenSearch.</br></p>
 
-<p>3. Create an AWS Lambda Function</br>
+<h4><p>3. Create an AWS Lambda Function</br></h4>
 
 Go to AWS Lambda > Create function.</br>
 
@@ -74,7 +74,7 @@ Click Create function.</br>
 
 Write the function using lambda.py.</br></p>
 
-<p>4. Configure Environment Variables</br>
+<h4><p>4. Configure Environment Variables</br></h4>
 
 Inside your Lambda function, navigate to the Configuration tab.</br>
 
@@ -90,11 +90,11 @@ To get the Foundation Model ARN, run:</br>
 
 aws bedrock list-foundation-models<br/></p>
 
-<p>5. Increase Lambda Timeout</br>
+<h4><p>5. Increase Lambda Timeout</br></h4>
 
 Update the Lambda function timeout to at least 1 minute (default is 3 seconds, which is insufficient).</br></p>
 
-<p>6. Test the Lambda Function</br>
+<h4><p>6. Test the Lambda Function</br></h4>
 
 Click Test inside Lambda.</br>
 
@@ -104,7 +104,7 @@ Use this JSON payload:</br>
 
 Click Invoke and check the response.</br></p>
 
-<p>7. Create an API Gateway and Deploy</br>
+<h4><p>7. Create an API Gateway and Deploy</br></h4>
 
 Navigate to API Gateway.</br>
 
@@ -122,7 +122,7 @@ Name it (your preference).</br>
 
 Deploy and note down the Invoke URL.</br></p>
 
-<p>8. Test API Using Postman</br>
+<h4><p>8. Test API Using Postman</br></h4>
 
 Open Postman.</br>
 
@@ -138,16 +138,14 @@ Click Send a POST request with a question in the request body.</br>
 
 Receive and verify the response.</br></p>
 
-<p>9. To create Streamlit App</br>
+<h4><p>9. To create Streamlit App</br></h4>
   pip install streamlit</br>
   use app.py to write the code</br>
   to run the python code "streamlit run app.py"</p></br>
     
-<p>10. Test the Web Application</br>
+<h4><p>10. Test the Web Application</br></h4>
    Open the designated port in a browser.</br>
    Enter a question and verify the response.</br></p>
 
-    <h2>Conclusion</h2>
-    <p>This project integrates Amazon Bedrock with OpenSearch to enable document-based Q&A via AI-powered embeddings and retrieval.</p>
 
 
