@@ -14,7 +14,7 @@
     <p>This guide provides step-by-step instructions to build a Retrieval-Augmented Generation (RAG) system using Amazon Bedrock, OpenSearch, and AWS Lambda.</p>
 
     <h2>Steps</h2>
-    <h3>1. Create an S3 Bucket and Upload Documents</h3>
+    <h3>1. Create an S3 Bucket and Upload Documents</h3>    
     <ol>
         <li>Navigate to Amazon S3 in the AWS Console.</li>
         <li>Click Create bucket.</li>
