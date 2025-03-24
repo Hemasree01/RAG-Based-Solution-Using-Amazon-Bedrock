@@ -102,7 +102,7 @@ Click Test inside Lambda.</br>
 Use this JSON payload:</br>
 
 { "user_query": "What is Amazon Bedrock?" }<br/>
-```<br/>
+
 
 Click Invoke and check the response.</br>
 
@@ -135,18 +135,18 @@ Enter {Invoke URL} in the address bar.</br>
 Set Headers:Content-Type: application/json</br>
 
 Enter Body:{ "user-query": "What is Amazon Bedrock?" }<br/>
-```<br/>
+
 
 Click Send a POST request with a question in the request body.</br>
 
 Receive and verify the response.</br>
 
 9. Streamlit App
-    <pre><code>pip install streamlit requests</code></pre>
-    <p>Create <code>app.py</code></p>
-    <pre><code>streamlit run app.py</code></pre>
+  pip install streamlit
+  use app.py to write the code
+  to run the python code "streamlit run app.py"
     
-10. Test the Web Application</h3>
+10. Test the Web Application
    Open the designated port in a browser.</br>
    Enter a question and verify the response.</br>
 
